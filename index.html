@@ -1,0 +1,152 @@
+﻿<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0f1216" />
+    <title>NovaChat</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="ambient">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <div class="app">
+      <aside class="sidebar">
+        <div class="brand">
+          <div class="brand-mark">N</div>
+          <div>
+            <div class="brand-name">NovaChat</div>
+            <div class="brand-tag">Local AI cockpit</div>
+          </div>
+        </div>
+
+        <button class="new-chat" id="newChatBtn">New chat</button>
+
+        <div class="thread-search">
+          <input id="threadSearch" type="text" placeholder="Search threads..." />
+          <div class="thread-search-actions">
+            <button id="exportAllBtn" class="export-all-btn" type="button">Export all</button>
+            <button id="importAllBtn" class="import-all-btn" type="button">Import</button>
+            <input id="importAllInput" type="file" accept="application/json" hidden />
+          </div>
+        </div>
+
+        <div class="chat-list" id="chatList"></div>
+
+        <div class="sidebar-footer">
+          <div class="status-label">Runtime</div>
+          <div class="status-pill" id="runtimePill">Demo mode</div>
+          <div class="status-note">Connect a model endpoint to go live.</div>
+        </div>
+      </aside>
+
+      <main class="chat">
+        <header class="topbar">
+          <div>
+            <div class="thread-header">
+              <div class="thread-title" id="threadTitle">Welcome thread</div>
+              <input
+                id="threadTitleInput"
+                class="thread-title-input hidden"
+                type="text"
+                aria-label="Thread title"
+              />
+              <button id="renameThreadBtn" class="rename-thread-btn" type="button">
+                Rename
+              </button>
+              <button id="editTagsBtn" class="edit-tags-btn" type="button">
+                Tags
+              </button>
+              <input
+                id="threadTagsInput"
+                class="thread-tags-input hidden"
+                type="text"
+                placeholder="tags (comma separated)"
+                aria-label="Thread tags"
+              />
+              <button id="pinThreadBtn" class="pin-thread-btn" type="button">
+                Pin
+              </button>
+              <button id="deleteThreadBtn" class="delete-thread-btn" type="button">
+                Delete thread
+              </button>
+              <button id="exportThreadBtn" class="export-thread-btn" type="button">
+                Export
+              </button>
+            </div>
+            <div class="thread-subtitle" id="connectionStatus">Not connected</div>
+          </div>
+          <div class="controls">
+            <label class="control">
+              <span>Model</span>
+              <select id="modelSelect">
+                <option value="auto">Auto</option>
+                <option value="fast">Fast</option>
+                <option value="creative">Creative</option>
+                <option value="reasoned">Reasoned</option>
+              </select>
+            </label>
+            <label class="control">
+              <span>Creativity</span>
+              <input id="tempRange" type="range" min="0" max="1" step="0.05" value="0.6" />
+            </label>
+            <label class="control">
+              <span>Search messages</span>
+              <input id="messageSearch" type="text" placeholder="Search in thread" />
+            </label>
+            <button id="themeToggleBtn" class="theme-toggle" type="button">Light</button>
+          </div>
+        </header>
+
+        <section class="chat-body" id="chatBody">
+          <div class="message assistant">
+            <div class="avatar">AI</div>
+            <div class="bubble">
+              <div class="bubble-title">NovaChat online</div>
+              <p>
+                I can talk like a real assistant once you plug in an AI provider. Hit
+                send to see the demo response, then wire your model in
+                <span class="mono">server.js</span>.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <footer class="composer">
+          <div class="composer-inner">
+            <input id="fileInput" type="file" multiple hidden />
+            <textarea
+              id="messageInput"
+              rows="1"
+              placeholder="Message NovaChat..."
+            ></textarea>
+            <button id="uploadBtn" class="upload-btn" type="button">Upload</button>
+            <button id="stopBtn" class="stop-btn hidden" type="button">Stop</button>
+            <button id="sendBtn" class="send-btn">Send</button>
+          </div>
+          <div class="attachments-row hidden" id="attachmentsRow">
+            <div class="attachments" id="attachmentList"></div>
+            <button id="clearAttachmentsBtn" class="clear-attachments-btn" type="button">
+              Clear all
+            </button>
+          </div>
+          <div class="composer-hint">
+            Press Enter to send, Shift + Enter for a new line.
+          </div>
+        </footer>
+      </main>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
