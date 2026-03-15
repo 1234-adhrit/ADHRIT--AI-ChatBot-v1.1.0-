@@ -143,4 +143,4 @@ If it still fails, use Ollama (CLI-only) instead.
 
 ## Go Online
 
-- https://adhrit-ai-chatbot.onrender.com
+- https://adhrit-ai-chatbot-new.onrender.com
