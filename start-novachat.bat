@@ -11,7 +11,7 @@ set "AI_API_KEY="
 rem set "AI_API_KEY=sk-PASTE-YOUR-REAL-KEY-HERE"
 
 rem 3) Start the server
-node "C:\Users\Administrator\OneDrive\Documents\CodeX[15]\server.js"
+node "C:\Users\"Your UserName"\OneDrive\"Folder Loacation"\"Folder Name"\server.js"
 
 rem 4) Keep the window open if it exits
 pause
